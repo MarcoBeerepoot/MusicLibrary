@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "c6f5c7ad-6fa1-425a-b072-7366b241657e",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get artist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5289/artist/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5289",
+					"path": [
+						"artist",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get song",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5289/song/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5289",
+					"path": [
+						"song",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post artist",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"Name\": \"Soul Remnants\"\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5289/artist",
+					"host": [
+						"localhost"
+					],
+					"port": "5289",
+					"path": [
+						"artist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post song",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"Name\": \"More Than Meets the Eye\",\r\n\t\t\"Year\": 2008,\r\n\t\t\"Artist\": \"Testament\",\r\n\t\t\"Shortname\": \"morethanmeetstheeye\",\r\n\t\t\"Bpm\": 155,\r\n\t\t\"Duration\": 273869,\r\n\t\t\"Genre\": \"Metal/Nu-metal\",\r\n\t\t\"SpotifyId\": \"3g6d3WXdCLlHkFq5o2SAIG\",\r\n\t\t\"Album\": \"The Formation of Damnation\"\r\n\t}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5289/song",
+					"host": [
+						"localhost"
+					],
+					"port": "5289",
+					"path": [
+						"song"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
