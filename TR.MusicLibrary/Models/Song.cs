@@ -1,8 +1,8 @@
-﻿namespace TR.MusicLibrary.Model
+﻿namespace TR.MusicLibrary.Models
 {
     public class Song
     {
-        public int Id { get; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Year { get; set; }
         public string Shortname { get; set; }

@@ -1,14 +1,15 @@
-﻿namespace TR.MusicLibrary.Model
+﻿namespace TR.MusicLibrary.Models
 {
-    public class Artist
+    public class Album
     {
-        public Artist(string name)
+        public Album(string name)
         {
             Name = name;
         }
 
-        public int Id { get; }
+        public int Id { get; set; }
         public string Name { get; set; }
+        public int ArtistId { get; set; }
         public ICollection<Song> Songs { get; } = new List<Song>();
     }
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using TR.MusicLibrary.DTO;
-using TR.MusicLibrary.Model;
+using TR.MusicLibrary.Models;
 
 namespace TR.MusicLibrary.SL.Mappers
 {
