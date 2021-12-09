@@ -18,6 +18,7 @@ namespace TR.MusicLibrary.DL
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Song>().HasIndex(s => s.Name).IsUnique();
+            modelBuilder.Entity<Artist>().HasIndex(s => s.Name).IsUnique();
         }
     }
 }
