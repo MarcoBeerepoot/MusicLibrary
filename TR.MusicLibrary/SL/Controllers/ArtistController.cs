@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using TR.MusicLibrary.DL.Interfaces;
 using TR.MusicLibrary.DTO;
 using TR.MusicLibrary.Models;
+using TR.MusicLibrary.Services.Interfaces;
 
 namespace TR.MusicLibrary.SL.Controllers
 {
@@ -11,14 +12,14 @@ namespace TR.MusicLibrary.SL.Controllers
     public class ArtistController : ControllerBase
     {
         private readonly ILogger<ArtistController> _logger;
-        private readonly IArtistRepository _repository;
+        private readonly IArtistService _service;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ArtistController(ILogger<ArtistController> logger, IArtistRepository repository, IMapper mapper, IUnitOfWork unitOfWork)
+        public ArtistController(ILogger<ArtistController> logger, IArtistService service, IMapper mapper, IUnitOfWork unitOfWork)
         {
             _logger = logger;
-            _repository = repository;
+            _service = service;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
@@ -35,7 +36,7 @@ namespace TR.MusicLibrary.SL.Controllers
         {
             try
             {
-                var artist = await _repository.Get(id);
+                var artist = await _service.Get(id);
                 return artist == null ? NotFound() : Ok(_mapper.Map<ArtistDTO>(artist));
             }
             catch (Exception ex)
@@ -55,10 +56,8 @@ namespace TR.MusicLibrary.SL.Controllers
         {
             try
             {
-                var artist = new Artist(dto.Name);
-                await _repository.Add(artist);
-                await _unitOfWork.CommitAsync();
-                artist = await _repository.Get(artist.Id);
+                Artist artist = await AddArtist(dto);
+                artist = await _service.Get(artist.Id);
                 dto = _mapper.Map<ArtistDTO>(artist);
                 return Ok(CreatedAtAction(nameof(Get), new { id = dto.Id }, dto));
             }
@@ -67,6 +66,14 @@ namespace TR.MusicLibrary.SL.Controllers
                 _logger.LogError(ex, "Error in post for artist.");
                 return Problem();
             }
+        }
+
+        private async Task<Artist> AddArtist(ArtistDTO dto)
+        {
+            var artist = new Artist(dto.Name);
+            await _service.Add(artist);
+            await _unitOfWork.CommitAsync();
+            return artist;
         }
     }
 }

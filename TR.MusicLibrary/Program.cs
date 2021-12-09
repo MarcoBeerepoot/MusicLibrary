@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using TR.MusicLibrary.DL;
 using TR.MusicLibrary.DL.Interfaces;
+using TR.MusicLibrary.Services;
+using TR.MusicLibrary.Services.Interfaces;
 using TR.MusicLibrary.SL.Mappers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,7 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddDbContext<TR.MusicLibrary.DL.DbContext>(o => o.UseInMemoryDatabase("MusicLibrary"));
 
 builder.Services.AddScoped<IArtistRepository, ArtistRepository>();
+builder.Services.AddScoped<IArtistService, ArtistService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
