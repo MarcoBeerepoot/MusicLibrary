@@ -1,8 +1,9 @@
-﻿namespace TR.MusicLibrary.Models
+﻿using TR.MusicLibrary.Interfaces;
+
+namespace TR.MusicLibrary.Models
 {
-    public class Song
+    public class Song : IHasKey
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public int Year { get; set; }
         public string Shortname { get; set; }

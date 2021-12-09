@@ -13,5 +13,11 @@ namespace TR.MusicLibrary.DL
         public DbSet<Song> Songs { get; set; }
         public DbSet<Album> Albums { get; set; }
         public DbSet<Genre> Genres { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Song>().HasIndex(s => s.Name).IsUnique();
+        }
     }
 }

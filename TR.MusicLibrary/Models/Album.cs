@@ -1,15 +1,22 @@
-﻿namespace TR.MusicLibrary.Models
+﻿using TR.MusicLibrary.Interfaces;
+
+namespace TR.MusicLibrary.Models
 {
-    public class Album
+    public class Album : IHasKey
     {
-        public Album(string name)
+        public Album()
         {
-            Name = name;
         }
 
-        public int Id { get; set; }
+        public Album(string name, Artist artist)
+        {
+            Name = name;
+            Artist = artist;
+        }
+
         public string Name { get; set; }
         public int ArtistId { get; set; }
+        public Artist Artist { get; set; }
         public ICollection<Song> Songs { get; } = new List<Song>();
     }
 }

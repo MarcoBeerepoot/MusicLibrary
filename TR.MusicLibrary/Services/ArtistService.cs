@@ -16,5 +16,16 @@ namespace TR.MusicLibrary.Services
         public Task Add(Artist artist) => _repository.Add(artist);
 
         public Task<Artist> Get(int id) => _repository.Get(id);
+
+        public async Task<Artist> GetOrCreate(string name)
+        {
+            var artist = await _repository.Get(name);
+            if (artist == null)
+            {
+                artist = new Artist(name);
+                await Add(artist);
+            }
+            return artist;
+        }
     }
 }
