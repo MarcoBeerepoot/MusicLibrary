@@ -1,4 +1,4 @@
-﻿namespace TR.MusicLibrary.DL.Interfaces
+﻿namespace TR.MusicLibrary.Interfaces
 {
     public interface IUnitOfWork
     {

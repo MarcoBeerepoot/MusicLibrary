@@ -1,7 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using TR.MusicLibrary.DL.Interfaces;
 using TR.MusicLibrary.DTO;
+using TR.MusicLibrary.Interfaces;
 using TR.MusicLibrary.Models;
 using TR.MusicLibrary.Services.Interfaces;
 

@@ -2,9 +2,7 @@
 
 namespace TR.MusicLibrary.DL.Interfaces
 {
-    public interface IArtistRepository
+    public interface IArtistRepository : IRepository<Artist>
     {
-        Task<Artist> Get(int id);
-        Task Add(Artist artist);
     }
 }

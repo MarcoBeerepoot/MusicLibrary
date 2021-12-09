@@ -1,4 +1,4 @@
-﻿using TR.MusicLibrary.DL.Interfaces;
+﻿using TR.MusicLibrary.Interfaces;
 
 namespace TR.MusicLibrary.DL
 {
